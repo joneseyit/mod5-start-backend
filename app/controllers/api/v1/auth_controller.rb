@@ -8,7 +8,7 @@ class Api::V1::AuthController < ApplicationController
       # render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
         render json: { user: @user.username, token: token, id: @user.id }, status: :accepted
     else
-      render json: { error: 'Invalid username or password.  Sorry Mate.'}, status: :unauthorized
+      render json: { error: "Either your usename or password didn't have any street cred. Try again."}, status: :unauthorized
     end
   end
 

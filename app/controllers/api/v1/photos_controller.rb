@@ -13,5 +13,9 @@ class Api::V1::PhotosController < ApplicationController
     end
   end
 
+  private
+  def photo_params
+    params.permit(:title, :caption, :location, :img, :picture, :user_id)
+  end
 
 end
