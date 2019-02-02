@@ -1,4 +1,5 @@
 class Api::V1::PhotosController < ApplicationController
+  #AIzaSyDPH2QilxUFyLMcPpiiDFrM-xT9UcGa1hU googlemaps api
   def index
     @photos = Photo.all
     render json: @photos
