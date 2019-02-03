@@ -1,5 +1,6 @@
 class Api::V1::PhotosController < ApplicationController
   #AIzaSyDPH2QilxUFyLMcPpiiDFrM-xT9UcGa1hU googlemaps api
+
   def index
     @photos = Photo.all
     render json: @photos
@@ -7,6 +8,7 @@ class Api::V1::PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    @photo.img = url_for(@photo.picture)
     if @photo.save
       render json: @photo
     else
