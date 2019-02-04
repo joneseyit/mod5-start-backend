@@ -7,6 +7,7 @@ class Api::V1::PhotosController < ApplicationController
   end
 
   def create
+    byebug
     @photo = Photo.new(photo_params)
     @photo.img = url_for(@photo.picture)
     if @photo.save
