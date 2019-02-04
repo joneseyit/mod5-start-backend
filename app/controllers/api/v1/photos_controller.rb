@@ -2,8 +2,12 @@ class Api::V1::PhotosController < ApplicationController
   #AIzaSyDPH2QilxUFyLMcPpiiDFrM-xT9UcGa1hU googlemaps api
 
   def index
-    @photos = Photo.search(search_params.to_h.symbolize_keys)
+    @photos = Photo.all
     render json: @photos
+  end
+
+  def search
+    @photos = Photo.search(search_params.to_h.symbolize_keys)
   end
 
   def create
