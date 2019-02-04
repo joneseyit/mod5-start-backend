@@ -2,12 +2,11 @@ class Api::V1::PhotosController < ApplicationController
   #AIzaSyDPH2QilxUFyLMcPpiiDFrM-xT9UcGa1hU googlemaps api
 
   def index
-    @photos = Photo.all
+    @photos = Photo.search(search_params.to_h.symbolize_keys)
     render json: @photos
   end
 
   def create
-    byebug
     @photo = Photo.new(photo_params)
     @photo.img = url_for(@photo.picture)
     if @photo.save
@@ -19,7 +18,11 @@ class Api::V1::PhotosController < ApplicationController
 
   private
   def photo_params
-    params.permit(:title, :caption, :location, :img, :picture, :user_id)
+    params.permit(:title, :caption, :location, :img, :picture, :user_id, :min_lng, :max_lng, :min_lat, :max_lat)
+  end
+
+  def search_params
+    params.permit(:min_lng, :max_lng, :min_lat, :max_lat)
   end
 
 end
