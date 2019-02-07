@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users
       resources :photos
       post '/login', to: 'auth#create'
+      post '/search', to: 'photos#search'
       # get 'profile', to: 'users#profile'
     end
   end

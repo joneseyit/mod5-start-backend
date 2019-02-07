@@ -6,8 +6,14 @@ class Api::V1::PhotosController < ApplicationController
     render json: @photos
   end
 
+  def show
+    @photo = Photo.find(params[:id])
+    render json: @photo
+  end
+
   def search
-    @photos = Photo.search(search_params.to_h.symbolize_keys)
+    @searchedPhotos = Photo.search(search_params.to_h.symbolize_keys)
+    render json: @searchedPhotos
   end
 
   def create
@@ -16,13 +22,13 @@ class Api::V1::PhotosController < ApplicationController
     if @photo.save
       render json: @photo
     else
-      render json: {error: "Couldn't create photo :("}
+      render json: { error: "Couldn't create photo :(" }
     end
   end
 
   private
   def photo_params
-    params.permit(:title, :caption, :location, :img, :picture, :user_id, :min_lng, :max_lng, :min_lat, :max_lat)
+    params.permit(:title, :caption, :location, :img, :picture, :user_id, :min_lng, :max_lng, :min_lat, :max_lat, :latitude, :longitude)
   end
 
   def search_params
