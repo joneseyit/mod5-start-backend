@@ -17,9 +17,9 @@ photos = ['https://images.unsplash.com/photo-1533142266415-ac591a4deae9?ixlib=rb
 
 center_point = { lat: 50.0515918, lng: 19.9357531 }
 
-Photo.create(title: "Bam", caption: "I was here for a bit and...", img: photos[0], user_id: 10, longitude: 50 * 100, latitude: 19.9357531 )
-Photo.create(title: "Slam", caption: "I was here for a bit and...", img: photos[1], user_id: 9, longitude: rand(15..25.00) * 100, latitude: rand(45.00..55.00) * 100)
-Photo.create(title: "Cheers", caption: "I was here for a bit and...", img: photos[2], user_id: 8, longitude: rand(15.00..25.00), latitude: rand(45.00..55.00))
+Photo.create(title: "Bam", caption: "I was here for a bit and...", img: photos[0], user_id: 10, longitude: rand(15.00..25.00), latitude: 19.9357531 )
+Photo.create(title: "Slam", caption: "I was here for a bit and...", img: photos[1], user_id: 9, longitude: rand(15..25.00), latitude: rand(45.00..55.00) * 100)
+Photo.create(title: "Cheers", caption: "I was here for a bit and...", img: photos[2], user_id: 8, longitude: , latitude: rand(45.00..55.00))
 Photo.create(title: "Regards", caption: "I was here for a bit and...", img: photos[3], user_id: 7, longitude: rand(15.00..25.00), latitude: rand(45.00..55.00))
 Photo.create(title: "Peace", caption: "I was here for a bit and...", img: photos[4], user_id: 6, longitude: rand(15.00..25.00), latitude: rand(45.00..55.00))
 Photo.create(title: "Walk-n-talk", caption: "I was here for a bit and...", img: photos[5], user_id: 5, longitude: rand(15.00..25.00), latitude: rand(45.00..55.00))
@@ -27,3 +27,12 @@ Photo.create(title: "Junior", caption: "I was here for a bit and...", img: photo
 Photo.create(title: "Believe", caption: "I was here for a bit and...", img: photos[7], user_id: 3, longitude: rand(15.00..25.00), latitude: rand(45.00..55.00))
 Photo.create(title: "Hope", caption: "I was here for a bit and...", img: photos[8], user_id: 2, longitude: rand(15.00..25.00), latitude: rand(45.00..55.00))
 Photo.create(title: "XYZ", caption: "I was here for a bit and...", img: photos[9], user_id: 1, longitude: rand(15.00..25.00), latitude: rand(45.00..55.00))
+
+
+tag = 10.times do
+  Tag.create(name: Faker::Hipster.word)
+end
+
+photo_tag = 10.times do
+  PhotoTag.create(tag_id: rand(0..10), photo_id: rand(0..10))
+end

@@ -3,12 +3,12 @@ class Api::V1::PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
-    render json: @photos
+    render json: @photos.to_json(:include => :tags)
   end
 
   def show
     @photo = Photo.find(params[:id])
-    render json: @photo
+    render json: @photo.to_json(:include => :tags)
   end
 
   def search
@@ -20,7 +20,7 @@ class Api::V1::PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     @photo.img = url_for(@photo.picture)
     if @photo.save
-      render json: @photo
+      render json: @photo.to_json(:include => :tags)
     else
       render json: { error: "Couldn't create photo :(" }
     end

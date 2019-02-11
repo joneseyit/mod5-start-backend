@@ -14,5 +14,6 @@ class Photo < ApplicationRecord
         limit(API_RESULTS_LIMIT)
 
   end
+  
 
 end
